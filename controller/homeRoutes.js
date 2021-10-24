@@ -8,8 +8,8 @@ router.get('/', async (req, res) => {
         const serializedData = postsData.map((data) => data.get({ plain: true }));
         console.log('data',serializedData);
         
-        //renders all.handlebars
-        res.render('all', { serializedData }); 
+        //renders homepage.handlebars
+        res.render('homepage', { serializedData }); 
     }
     catch(err){
         res.status(500).json(err);
@@ -17,10 +17,8 @@ router.get('/', async (req, res) => {
 });
 
 
-// router.get('/login', async (req, res) => {
-//     try{
-//         const userData = await 
-//     }
-// });
+router.get('/login', async (req, res) => {
+    res.render('login');
+});
 
 module.exports = router;
