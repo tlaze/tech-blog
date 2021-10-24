@@ -3,6 +3,7 @@ const { Example } = require('../models/index');
 
 router.get('/', async (req, res) => {
     try{
+        res.render('all');
         const dbExampleData = await Example.findAll();
         res.status(200).json(dbExampleData);
     }
