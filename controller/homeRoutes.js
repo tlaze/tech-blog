@@ -1,11 +1,11 @@
 const router = require('express').Router();
-const { Example } = require('../models/index');
+const { Posts } = require('../models/index');
 
 router.get('/', async (req, res) => {
     try{
-        const dbExampleData = await Example.findAll();
+        const postsData = await Posts.findAll();
 
-        const serializedData = dbExampleData.map((data) => data.get({ plain: true }));
+        const serializedData = postsData.map((data) => data.get({ plain: true }));
         console.log('data',serializedData);
         
         //renders all.handlebars
@@ -15,5 +15,12 @@ router.get('/', async (req, res) => {
         res.status(500).json(err);
     }
 });
+
+
+// router.get('/login', async (req, res) => {
+//     try{
+//         const userData = await 
+//     }
+// });
 
 module.exports = router;

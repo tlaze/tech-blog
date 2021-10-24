@@ -4,12 +4,14 @@
 			<div class="card bg-success">
             {{#each serializedData as |data|}}
 				<h5 class="card-header text-center">
-					Card title
-                    {{data.name}}
+					Card Title:
+                    {{data.title}}
+                    Posted At: 
+                    {{data.createdAt}}
 				</h5>
 				<div class="card-body bg-danger">
 					<p class="card-text text-center">
-						Card content
+						Card Content:
                         {{data.description}}
 					</p>
 				</div>
