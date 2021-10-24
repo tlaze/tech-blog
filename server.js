@@ -15,7 +15,6 @@ app.use(routes);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/static', express.static(path.join(__dirname, 'public')))
-console.log(__dirname);
 
 sequelize.sync({ force: false }).then(() => {
 	app.listen(PORT, () => {

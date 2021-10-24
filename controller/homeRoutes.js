@@ -3,9 +3,10 @@ const { Example } = require('../models/index');
 
 router.get('/', async (req, res) => {
     try{
-        res.render('all');
-        const dbExampleData = await Example.findAll();
-        res.status(200).json(dbExampleData);
+        //renders all.handlebars
+        res.render('all'); 
+        // const dbExampleData = await Example.findAll();
+        // res.status(200).json(dbExampleData);
     }
     catch(err){
         res.status(500).json(err);
