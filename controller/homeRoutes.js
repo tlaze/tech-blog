@@ -1,20 +1,12 @@
 const router = require('express').Router();
-const { Example } = require('../models/Example');
+const { Example } = require('../models/index');
 
-router.get('/', async (req,res) => {
+router.get('/', async (req, res) => {
     try{
-        const dbExampleData = await Example.findAll({
-            include: [
-                {
-                    model: Example
-                },
-            ],
-        });
-        console.log("Yes");
+        const dbExampleData = await Example.findAll();
         res.status(200).json(dbExampleData);
     }
     catch(err){
-        console.log("no");
         res.status(500).json(err);
     }
 })
