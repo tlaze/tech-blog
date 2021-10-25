@@ -2,7 +2,17 @@
     <h1 class="display-6">Dashboard</h1>
 </div>
 
-
-{{#each posts as |post|}}
-{{> dashboardDetails}}
-{{/each}}
+{{#if loggedIn}}
+    {{#each posts as |post|}}
+    {{> dashboardDetails}}
+    {{/each}}
+{{else}}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h5>You Must Login First To View this Page</h5>
+            <a href="/login" class="link-dark">Click here to Login</a>
+        </div>
+    </div>
+</div>
+{{/if}}

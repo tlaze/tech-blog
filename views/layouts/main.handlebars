@@ -13,12 +13,12 @@
             <nav class="navbar navbar-expand navbar-dark bg-dark justify-content-center">
                 <div class="navbar-nav">
                     <a class="nav-item nav-link" href="/">Home</a>
-                    {{!-- {{#if loggedIn}} --}}
                     <a class="nav-item nav-link" href="/dashboard">Dashboard</a>
-                    {{!-- <a class="nav-item nav-link" id="logout" href="/">Logout</a> --}}
-                    {{!-- {{else}} --}}
+                    {{#if loggedIn}}
+                    <a class="nav-item nav-link" id="logout" href="/">Logout</a>
+                    {{else}}
                     <a class="nav-item nav-link" href="/login">Login</a>
-                    {{!-- {{/if}} --}}
+                    {{/if}}
                 </div>
             </nav>
         </header>
