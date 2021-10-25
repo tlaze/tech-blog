@@ -3,13 +3,20 @@ const { Posts, Users} = require('../models');
 
 router.get('/', async (req, res) => {
     try{
-        const postsData = await Posts.findAll();
+        const postsData = await Posts.findAll({
+            include: [
+                {
+                    model: Users,
+                    attributes: ['username'],
+                },
+            ]
+        });
 
-        const serializedData = postsData.map((data) => data.get({ plain: true }));
+        const posts = postsData.map((data) => data.get({ plain: true }));
     
         //renders homepage.handlebars
         res.render('homepage', { 
-            serializedData,
+            posts,
             loggedIn: req.session.loggedIn,
          }); 
     }
