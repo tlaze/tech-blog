@@ -23,14 +23,14 @@ header{
     color:white;
 }
 
-.login-form{
-    margin-top:30px;
-}
-
 .form-group{
     margin-bottom:30px;
 }
 
-#submitBtn{
+#loginBtn{
     margin-bottom: 30px;
+}
+
+#noDashText{
+    margin-bottom:30px;
 }
