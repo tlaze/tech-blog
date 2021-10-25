@@ -3,7 +3,7 @@ const { Posts } = require('../models');
 const postData = [
 	{
 		title: 'Example Title 1',
-		description: "Description 1",  
+		description: "Description 1", 
 	},
 	{
 		title: 'Example Title 2',

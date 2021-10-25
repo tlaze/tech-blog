@@ -17,6 +17,7 @@ Posts.init(
         description: {
             type: DataTypes.STRING,
         },
+	
 	},
 	{
 		sequelize,
