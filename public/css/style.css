@@ -1,3 +1,32 @@
-body{
-    background-color: blue;
+header{
+    margin-bottom: 30px;
+}
+
+.nav-item {
+    margin-left:30px;
+    margin-right: 30px;
+}
+
+.jumbotron{
+    margin-bottom: 30px;
+}
+
+.posts{
+    margin-bottom: 30px;
+}
+
+.card{
+    border: 1px solid black;
+}
+
+.card-header{
+    color:white;
+}
+
+.form-group{
+    margin-bottom:30px;
+}
+
+#submitBtn{
+    margin-bottom: 30px;
 }

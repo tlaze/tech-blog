@@ -2,7 +2,7 @@ const { Posts } = require('../models');
 
 const postData = [
 	{
-		title: 'Example Title 1',
+		title: 'Example Titfasfasdfasdfajsdlfkjasdlkfjasdklfjasdlkfjasdklfjsflasjdflaksjdflasjdflaskdjfalskdfjasdlkfjsadlkfadlkfjasdlkfjasdklfjasdlkfjsalkfajs;dle 1',
 		description: "Description 1", 
 	},
 	{

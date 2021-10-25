@@ -1,14 +1,11 @@
-<div class="container-fluid">
+<div class="container-fluid posts">
 	<div class="row">
 		<div class="col-md-12">
-			<div class="card bg-success">
-                <h5 class="card-header text-center">Card Title: {{title}}<span> Posted At: {{createdAt}}</span>
-                </h5>
-                <div class="card-body bg-danger">
-                    <p class="card-text text-center">
-                    Card Content:
-                    {{description}}
-                    </p>
+			<div class="card">
+                <h5 class="card-header bg-dark text-truncate">{{title}}</h5>
+                <h6 class="card-header bg-dark text-center">Posted At: {{createdAt}}</h6>
+                <div class="card-body">
+                    <p class="card-text text-center">{{description}}</p>
                 </div>
 			</div>
 		</div>
