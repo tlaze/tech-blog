@@ -6,6 +6,12 @@ const withAuth = require('../utils/auth');
 router.get('/', async (req, res) => {
     try{
         const postsData = await Posts.findAll({
+            attributes: [
+                'id',
+                'title',
+                'description',
+                'date_created'
+            ],
             include: [
                 {
                     model: Users,
@@ -29,39 +35,15 @@ router.get('/', async (req, res) => {
     }
 });
 
-// Redirects user to login screen if they aren't logged in
-router.get('/login', async (req, res) => {
-    if(req.session.loggedIn){
-        res.redirect('/');
-        return;
+router.get('/login', (req, res) => {
+    // If a session exists, redirect the request to the homepage
+    if (req.session.loggedIn) {
+      res.redirect('/dashboard');
+      return;
     }
     res.render('login');
-});
+}); 
 
-
-// Uses withAuth middleware to prevent access to routes unless logged in
-router.get('/dashboard', async (req,res) => {
-    
-    try {
-        const userData = await Posts.findAll({
-            include: {
-                model: Users,
-                attributes: ['username'],
-            },
-        });
-    
-        const posts = userData.map((data) => data.get({ plain: true }));
-    
-        res.render('dashboard', {
-            posts,
-            logged_in: req.session.loggedIn,
-        }); 
-    }
-    catch (err) {
-        res.status(500).json(err);
-    }
-});
-            
 
 router.get('/signup', async (req,res) => {
     res.render('signup');
