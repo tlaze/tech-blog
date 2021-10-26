@@ -21,13 +21,15 @@ router.post('/login', async (req, res) => {
       res.status(400).json({ message: "Incorrect Username/Password"});
       return;
     };
-    console.log(userData);
+
+    // console.log("userRoutes userdata:" ,userData);
+
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.username = userData.username;
       req.session.loggedIn = true;
       
-      res.json(userData);
+      res.json({ user: userData, message: 'You are now logged in!' });
     });
   }
   catch(err){
@@ -52,7 +54,6 @@ router.post('/signup', async (req, res) => {
     });
   }
   catch(err){
-    console.error(err);
     res.status(500).json(err);
   }
 });

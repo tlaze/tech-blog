@@ -1,7 +1,31 @@
-// const newPostHandler = async (event) => {
-   
-//   event.preventDefault();
+const newPostHandler = async (event) => {
+    
+   event.preventDefault();
 
-//   const title = document.querySelector
+   const title = document.querySelector('#new-post-title').value.trim();
+   const description = document.querySelector('#new-post-description').value.trim();
 
-// document.querySelector("#add-post-button").addEventListener("click", newPostHandler);
+    if(title && description){
+        try{
+            const response = await fetch("/api/posts/dashboard/new",{
+                method: "POST",
+                body: JSON.stringify({ 
+                    title,
+                    description
+                }),
+                headers: { "Content-Type": "application/json" },
+            });
+            if(response.ok){
+                document.location.replace('../');
+            }
+            else{
+                alert(response.statusText);
+            }    
+        }
+        catch(err){
+            console.error(err);
+            res.status(500).json(err);
+        }
+    }
+};
+document.querySelector("#new-post-btn").addEventListener("click", newPostHandler);

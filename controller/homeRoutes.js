@@ -45,8 +45,8 @@ router.get('/signup', async (req,res) => {
 
 // Displays dashboard after being logged in
 router.get('/dashboard', withAuth, async (req, res) => {
+  
   try{
-    console.log(req.session.user_id, "session id");
     // Find the logged in user based on the session ID
     const postsData = await Posts.findAll(
       {
@@ -71,7 +71,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
         return;
       }
       const dashPosts = postsData.map(post => post.get({ plain: true }));
-      console.log(dashPosts);
+
       res.render('dashboard', { dashPosts, loggedIn: req.session.loggedIn });
   }
   catch(err) {
