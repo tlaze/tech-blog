@@ -61,13 +61,12 @@ router.get('/dashboard', withAuth, async (req, res) => {
           'date_created'
         ],
         include:{
-          model: Users,
-          attributes: ['username']
+          model: Users
           }
       });
       const dashPosts = postsData.map(post => post.get({ plain: true }));
       
-      console.log(dashPosts);
+      console.log(dashPosts[0].user);
       res.render('dashboard', { dashPosts, loggedIn: true });
   }
   catch(err) {
