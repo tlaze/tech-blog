@@ -6,10 +6,10 @@ const logout = async () => {
     });
 
     if(response.ok){
-        document.location.replace('/dashboard');
+        document.location.replace('/');
     }
     else{
-        alert("Logged Out");
+        alert(response.statusText);
     }
 };
 

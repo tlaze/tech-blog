@@ -1,6 +1,5 @@
 const router = require('express').Router();
 const { Posts, Users } = require('../models');
-const withAuth = require('../utils/auth');
 
 
 // Displays all posts on homepage
@@ -42,39 +41,5 @@ router.get('/login', (req, res) => {
 router.get('/signup', async (req,res) => {
   res.render('signup');
 });
-
-
-// Use withAuth middleware to prevent access to route unless logged in
-router.get('/dashboard', withAuth, async (req, res) => {
-    try {
-      // Find the logged in user based on the session ID
-        const postsData = await Posts.findAll({
-          where: {
-            user_id: req.session.user_id,
-          },
-          attributes: [
-            'id',
-            'title',
-            'content',
-            'dated_created'
-          ],
-          include: {
-            model: Users,
-            attributes: ['username']
-          }
-      });
-      console.log(postData);
-      const posts = postsData.map(post => post.get({ plain: true }));
-  
-      res.render('dashboard', {
-        posts,
-        loggedIn: true
-      });
-    } 
-    catch(err) {
-        res.status(500).json(err);
-    }
-});
-
 
 module.exports = router;

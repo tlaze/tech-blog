@@ -42,15 +42,13 @@ router.post('/login', async (req, res) => {
       return;
     };
 
-    console.log(userData.username);
-    console.log(userData.password);
-    console.log(userData.id);
 
     req.session.save(() => {
       req.session.user_id = userData.id;
+      req.session.username = userData.username;
       req.session.loggedIn = true;
       
-      res.status(200).json('You are now Logged In!');
+      res.json('You are now Logged In!');
     });
   }
   catch(err){
@@ -64,11 +62,11 @@ router.post('/logout', (req, res) => {
   if(req.session.loggedIn){
     // Destroys the current session and logs user out
     req.session.destroy(() => {
-      res.status(200).end();
+      res.status(204).end();
     });
   }
   else{
-    res.status(404).end();
+    res.status(400).end();
   }
 });
 
