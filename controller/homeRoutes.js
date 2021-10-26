@@ -2,8 +2,6 @@ const router = require('express').Router();
 const { Posts, Users } = require('../models');
 const withAuth = require('../utils/auth');
 
-
-
 // Displays all posts on homepage
 router.get('/', async (req, res) => {
     try{
@@ -33,7 +31,7 @@ router.get('/', async (req, res) => {
 // If user is logged in, directs to dashboard, else goes to log in screen
 router.get('/login', (req, res) => {
   if (req.session.loggedIn) {
-    res.redirect('/');
+    res.redirect('/dashboard');
     return;
   }
   res.render('login');
@@ -48,6 +46,7 @@ router.get('/signup', async (req,res) => {
 // Displays dashboard after being logged in
 router.get('/dashboard', withAuth, async (req, res) => {
   try{
+    console.log(req.session.user_id, "session id");
     // Find the logged in user based on the session ID
     const postsData = await Posts.findAll(
       {
@@ -58,19 +57,26 @@ router.get('/dashboard', withAuth, async (req, res) => {
           'id',
           'title',
           'description',
-          'date_created'
+          'date_created',
+          'user_id'
         ],
         include:{
-          model: Users
+          model: Users,
+          as: 'user',
+          attributes: ['username']
           }
       });
+      if(!postsData){
+        res.status(404).json({ message: "No Posts Available" });
+        return;
+      }
       const dashPosts = postsData.map(post => post.get({ plain: true }));
-      
-      console.log(dashPosts[0].user);
-      res.render('dashboard', { dashPosts, loggedIn: true });
+      console.log(dashPosts);
+      res.render('dashboard', { dashPosts, loggedIn: req.session.loggedIn });
   }
   catch(err) {
-      res.status(500).json(err);
+    console.error(err);
+    res.status(500).json(err);
   }
 });
 
