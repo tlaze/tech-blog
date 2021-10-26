@@ -48,15 +48,26 @@ router.get('/signup', async (req,res) => {
 router.get('/dashboard', withAuth, async (req, res) => {
     try {
       // Find the logged in user based on the session ID
-        const userData = await Users.findAll({
-            attributes: { exclude: ['password'] },
-            include: [{ model: Posts }],
+        const postsData = await Posts.findAll({
+          where: {
+            user_id: req.session.user_id,
+          },
+          attributes: [
+            'id',
+            'title',
+            'content',
+            'dated_created'
+          ],
+          include: {
+            model: Users,
+            attributes: ['username']
+          }
       });
   
-      const users = userData.get({ plain: true });
+      const posts = postsData.map(post => post.get({ plain: true }));
   
       res.render('dashboard', {
-        ...users,
+        posts,
         loggedIn: true
       });
     } 
