@@ -62,8 +62,6 @@ router.get('/dashboard', withAuth, async (req, res) => {
         ],
         include:{
           model: Users,
-          as: 'user',
-          attributes: ['username']
           }
       });
       if(!postsData){
@@ -71,8 +69,15 @@ router.get('/dashboard', withAuth, async (req, res) => {
         return;
       }
       const dashPosts = postsData.map(post => post.get({ plain: true }));
-
-      res.render('dashboard', { dashPosts, loggedIn: req.session.loggedIn });
+      dashPosts.user = req.session.username;
+      dashPosts.id = req.session.user_id;
+      console.log("dashpost", dashPosts);
+      res.render('dashboard', {
+            dashPosts: dashPosts,
+            user: req.session.username,
+            id: req.session.user_id,
+            loggedIn: req.session.loggedIn
+      });
   }
   catch(err) {
     console.error(err);
