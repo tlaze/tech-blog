@@ -63,7 +63,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
             attributes: ['username']
           }
       });
-  
+      console.log(postData);
       const posts = postsData.map(post => post.get({ plain: true }));
   
       res.render('dashboard', {
@@ -76,27 +76,5 @@ router.get('/dashboard', withAuth, async (req, res) => {
     }
 });
 
-// Gets Posts by User displayed on the dashboard
-router.get('/dashboard/:id', async (req, res) => {
-    try {
-      const postsData = await Posts.findByPk(req.params.id, {
-        include: [
-          {
-            model: Users,
-            attributes: ['username'],
-          },
-        ],
-      });
-  
-      const post = postsData.get({ plain: true });
-  
-      res.render('dashboard', {
-        ...post,
-        loggedIn: req.session.loggedIn,
-      });
-    } catch (err) {
-      res.status(500).json(err);
-    }
-  });
 
 module.exports = router;

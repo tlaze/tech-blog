@@ -64,7 +64,7 @@ router.post('/logout', (req, res) => {
   if(req.session.loggedIn){
     // Destroys the current session and logs user out
     req.session.destroy(() => {
-      res.status(204).end();
+      res.status(200).end();
     });
   }
   else{

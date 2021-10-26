@@ -6,11 +6,11 @@ const logout = async () => {
     });
 
     if(response.ok){
-        document.location.replace('/');
+        document.location.replace('/dashboard');
     }
     else{
-        alert("Logged Out" + response.statusText);
+        alert("Logged Out");
     }
 };
 
-document.querySelecotr('#logout').addEventListener('click', logout);
+document.querySelector('#logout').addEventListener('click', logout);

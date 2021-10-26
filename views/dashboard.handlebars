@@ -1,8 +1,6 @@
 <div class="jumbotron text-center">
     <h1 class="display-6">Dashboard</h1>
 </div>
-{{#if loggedIn}}
-    {{#each posts as |post|}}
-    {{> dashboardDetails}}
-    {{/each}}
-{{/if}}
+{{#each posts as |post|}}
+{{> dashboardDetails}}
+{{/each}}
