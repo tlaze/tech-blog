@@ -23,7 +23,7 @@ const { Users } = require('../../models');
 
 router.post('/login', async (req, res) => {
   try{
-    const userData = await Users.findOne({ where: { username: req.body } });
+    const userData = await Users.findOne({ where: { username: req.body.username } });
       
     if(!userData){
       res.status(400).json({ message: "Incorrect Username/Password"});
