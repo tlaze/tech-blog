@@ -1,48 +1,29 @@
 const router = require('express').Router();
-const { Users, Posts } = require('../../models');
+const { Users } = require('../../models');
 
-// Login
-router.get('/login', async (req, res) => {
-    try {
-      const userData = await Users.findAll({
-        attributed: {
-          exclude: ['password']
-        },
-      });
-      res.json(userData);
-    }
-    catch(err){
-      console.err(err);
-      res.status(500).json(err);
-    }
-});
 
-router.post('/', (req,res) => {
+// router.post('/', async (req,res) => {
+//   try{
+//     const userData = await Users.create(req.params.username);
+
+//     req.session.save(() => {
+//       req.session.user_id = userData.id;
+//       req.session.loggedIn = true;
+
+//       res.status(200).json(userData);
+//     });
+//     console.log(userData);
+//   }
+//   catch(err){
+//     console.error(err);
+//     res.status(400).json(err);
+//   }
+// });
+
+
+router.post('/login', async (req, res) => {
   try{
-    const userData = Users.create({
-      username: req.body.username,
-      password: req.body.password
-    });
-    requestAnimationFrame.session.save(() => {
-      req.session.user_id = userData.id;
-      req.session.username = userData.username;
-      req.session.loggedIn = true;
-      res.json(userData);
-    });
-  }
-  catch(err){
-    console.error(err);
-    res.status(500).json(err);
-  }
-});
-
-router.post('/login', (req,res) => {
-  try{
-    const userData = Users.findOne({
-      where: {
-        username: req.body.username
-      }
-    });
+    const userData = await Users.findOne({ where: { username: req.body } });
       
     if(!userData){
       res.status(400).json({ message: "Incorrect Username/Password"});
@@ -58,7 +39,6 @@ router.post('/login', (req,res) => {
 
     req.session.save(() => {
       req.session.user_id = userData.id;
-      req.session.username = userData.username;
       req.session.loggedIn = true;
       res.json({ user: userData, message: "You are now Logged In!" });
     });
