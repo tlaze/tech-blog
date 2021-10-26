@@ -3,8 +3,8 @@
         <h1 class="display-6">Dashboard</h1>
     </div>
 </div>
-<div>
-    {{#each dashPosts as |posts|}}
-    {{> dashboardDetails}}
-    {{/each}}
-</div>
+
+
+{{#each dashPosts as |dashPost|}}
+{{> dashboardDetails}}
+{{/each}}
