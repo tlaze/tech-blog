@@ -16,3 +16,5 @@ router.post('/dashboard', withAuth, async (req,res) => {
         rest.status(500).json(err)
     }
 })
+
+module.exports = router;

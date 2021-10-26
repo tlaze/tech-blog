@@ -80,4 +80,9 @@ router.get('/dashboard', withAuth, async (req, res) => {
   }
 });
 
+// Routes to new post page after clicking button
+router.get('/dashboard/new', async (req, res) => {
+  res.render('newPost');
+});
+
 module.exports = router;
