@@ -1,17 +1,19 @@
+const title = document.querySelector('input[name="selected-post-id"]').value;
+
 const updatePostHandler = async (event) => {
     
     event.preventDefault();
  
-    const title = document.querySelector('#selected-post-title').value.trim();
-    const description = document.querySelector('#selected-post-description').value.trim();
- 
+    const title = document.querySelector('input[name="selected-post-title"]').value;
+    const description = document.querySelector('textarea[name="selected-post-description"]').value;
+    console.log(JSON.stringify(title,description));
      if(title && description){
          try{
-             const response = await fetch('/api/posts/dashboard/new',{
-                 method: 'POST',
+             const response = await fetch(`/api/posts/dashboard/${postId}`,{
+                 method: 'PUT',
                  body: JSON.stringify({ 
-                     title,
-                     description
+                    title,
+                    description
                  }),
                  headers: { 'Content-Type': 'application/json' },
              });
@@ -28,4 +30,4 @@ const updatePostHandler = async (event) => {
          }
      }
  };
- document.querySelector("#update-post-btn").addEventListener("click", updatePostHandler);
+ document.querySelector("#update-post-btn").addEventListener("submit", updatePostHandler);

@@ -17,7 +17,6 @@ router.get('/', async (req, res) => {
       // Serialized post data so it can be read by the handlebars template
       const homePosts = postsData.map((post) => post.get({ plain: true }));
   
-      // console.log("line20homeRoutes",homePosts);
       //renders homepage.handlebars
       res.render('homepage', { homePosts ,loggedIn: req.session.loggedIn }); 
     }
@@ -89,10 +88,30 @@ router.get('/dashboard/new', async (req, res) => {
   }
 });
 
-router.get('*', (req, res) => {
-  res.redirect('/');
+// Renders the data from a single post. Link attached to postDetails handle bar to send the id through the route
+router.get('/dashboard/:id', async (req, res) => {
+  try {
+    const selectedPost = await Posts.findByPk(req.params.id, {
+      include: Users
+    });
+
+    if (selectedPost) {
+      const post = selectedPost.get({ plain: true });
+      
+      console.log("selectedpost", post);
+      res.render('selectedPost', { post });
+    } else {
+      res.status(404).end();
+    }
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 
+
+router.get('*', (req, res) => {
+  res.redirect('/');
+});
 
 module.exports = router;

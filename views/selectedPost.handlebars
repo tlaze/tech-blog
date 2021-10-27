@@ -8,19 +8,22 @@
     <div class="row">
         <div class="col-8 offset-2">
             <div class="card">
-                <form class="bg-dark text-center">
+                <form class="bg-dark text-center" action="/dashboard/" id="selected-post-form">
                     <div class="form-group card-header">
-                        <label for="selected-post-title">Title</label>
-                        <input type="text" class="form-control" id="selected-post-title">
-                        <label for="selected-post-description" class="card-body">Description</label>
-                        <textarea class="form-control" id="selected-post-description" rows="6"></textarea>
-                        <button type="submit" class="btn btn-outline-light post-btn" id="update-post-btn">Update</button>
-                        <button type="submit" class="btn btn-outline-light post-btn" id="delete-post-btn">Delete</button>
+                        <input type="hidden" name="selected-post-id" value="{{post.id}}"/>
+                        
+                        <label class="form-label" for="selected-post-title">title</label>
+                        <input type="text" class="form-control" name="selected-post-title" placeholder="{{post.title}}">
+                        
+                        <label class="card-body form-label" for="selected-post-description">Description</label>
+                        <textarea class="form-control" name="selected-post-description" rows="6" placeholder="{{post.description}}"></textarea>
+                        
+                        <button type="submit" class="btn btn-info post-btn" id="update-post-btn">Update</button>
+                        <button type="click" class="btn btn-dark post-btn" id="delete-post-btn">Delete</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
-{{!-- While logged in.... --}}
 <script src="/js/selectedPost.js"></script>
