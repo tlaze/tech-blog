@@ -3,14 +3,14 @@
         <h1 class="display-4">Dashboard</h1>
         <h3 id="dashWelcome" class="display-6">Welcome {{user.username}}!</h3>
     </div>
-{{#if dashPosts.length}}
-    <section>
-        <p id="dashInfo">Below are all posts you created. Here you can Add, Update, or Delete posts.</p>
-        {{#each dashPosts as |dashPost|}}
-        {{> postsDetails}}
-        {{/each}}
+    <section class="text-center">
+        {{#if posts.length}}    
+            <p id="dashInfo">Below are all posts you created. Here you can Add, Update, or Delete posts.</p>
+            {{#each posts as |post|}}
+            {{> postsDetails}}
+            {{/each}}
+        {{/if}}
     </section>
-{{/if}}
 </div>
 <div class="container">
     <div class="row">
