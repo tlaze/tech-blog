@@ -60,8 +60,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
       ],
       include: [
         {
-          model: Users,
-          attributes: ["username"]
+          model: Users
         }
       ]
     })
@@ -78,7 +77,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
 
 
 // Routes to new post page after clicking button
-router.get('/dashboard/new', async (req, res) => {
+router.get('/dashboard/new', withAuth,async (req, res) => {
   if(req.session.loggedIn){
     res.render('createPost');
   }
@@ -89,7 +88,7 @@ router.get('/dashboard/new', async (req, res) => {
 });
 
 // Renders the data from a single post. Link attached to postDetails handle bar to send the id through the route
-router.get('/dashboard/:id', async (req, res) => {
+router.get('/dashboard/:id', withAuth, async (req, res) => {
   try {
     const selectedPost = await Posts.findByPk(req.params.id, {
       include: Users

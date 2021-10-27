@@ -1,4 +1,4 @@
-const title = document.querySelector('input[name="selected-post-id"]').value;
+const postId = document.querySelector('input[name="selected-post-id"]').value;
 
 const updatePostHandler = async (event) => {
     
@@ -6,15 +6,15 @@ const updatePostHandler = async (event) => {
  
     const title = document.querySelector('input[name="selected-post-title"]').value;
     const description = document.querySelector('textarea[name="selected-post-description"]').value;
-    console.log(JSON.stringify(title,description));
+
      if(title && description){
          try{
-             const response = await fetch(`/api/posts/dashboard/${postId}`,{
-                 method: 'PUT',
-                 body: JSON.stringify({ 
+             const response = await fetch(`/api/posts/dashboard/${postId}`, {
+                method: 'PUT',
+                body: JSON.stringify({
                     title,
                     description
-                 }),
+                }),
                  headers: { 'Content-Type': 'application/json' },
              });
              if(response.ok){
@@ -30,4 +30,4 @@ const updatePostHandler = async (event) => {
          }
      }
  };
- document.querySelector("#update-post-btn").addEventListener("submit", updatePostHandler);
+ document.querySelector("#selected-post-form").addEventListener("submit", updatePostHandler);

@@ -21,22 +21,18 @@ router.post('/dashboard/new', withAuth, async (req,res) => {
 
 router.put('/dashboard/:id', withAuth, async (req,res) => {
     try{
-        const updatePost = await Posts.update({
-            title: req.body.title,
-            description: req.body.description
-        },
-        {
+        const [updatePost] = await Posts.update(req.body, {
             where: {
-                id: req.params.id
+                id: req.params.id,
             },
         });
 
-        if(!updatePost){
-            res.status(404).json({ message: "No post found with this id" });
-            return;
+        if(updatePost > 0){
+            res.status(200).end();
         }
-        console.log(updatePost);
-        res.json(updatePost);
+        else{
+            res.status(404).end();
+        }
     }
     catch(err){
         console.error(err);
