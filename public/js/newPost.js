@@ -7,13 +7,13 @@ const newPostHandler = async (event) => {
 
     if(title && description){
         try{
-            const response = await fetch("/api/posts/dashboard/new",{
-                method: "POST",
+            const response = await fetch('/api/posts/dashboard/new',{
+                method: 'POST',
                 body: JSON.stringify({ 
                     title,
                     description
                 }),
-                headers: { "Content-Type": "application/json" },
+                headers: { 'Content-Type': 'application/json' },
             });
             if(response.ok){
                 document.location.replace('/dashboard');

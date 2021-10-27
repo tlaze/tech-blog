@@ -10,14 +10,14 @@ router.get('/', async (req, res) => {
           include: [
               {
                   model: Users,
-                  attributes: ['username'],
+                  attributes: ["username"],
               },
           ]
       });
       // Serialized post data so it can be read by the handlebars template
       const homePosts = postsData.map((post) => post.get({ plain: true }));
   
-      console.log("line20homeRoutes",homePosts);
+      // console.log("line20homeRoutes",homePosts);
       //renders homepage.handlebars
       res.render('homepage', { homePosts ,loggedIn: req.session.loggedIn }); 
     }
@@ -53,25 +53,23 @@ router.get('/dashboard', withAuth, async (req, res) => {
       where: {
         user_id: req.session.user_id
       },
-      order:[
-        ['date_created','DESC']
-      ],
       attributes: [
-        'id',
-        'title',
-        'description',
-        'date_created'
+        "id",
+        "title",
+        "description",
+        "date_created"
       ],
       include: [
         {
           model: Users,
-          attributes: ['username']
+          attributes: ["username"]
         }
       ]
     })
     const dashPosts = postsData.map(post => post.get({ plain: true }));
+
     console.log("posts from homeRoutes/dash", dashPosts);
-    res.render('dashboard', { dashPosts, loggedIn: true });
+    res.render("dashboard", { dashPosts, loggedIn: true });
   }
   catch(err) {
     console.error(err);

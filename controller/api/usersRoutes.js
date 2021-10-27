@@ -12,13 +12,14 @@ router.post('/login', async (req, res) => {
      });
 
     if(!userData){
-      res.status(400).json({ message: "Incorrect Username/Password"});
+      res.status(400).json({ message: 'Incorrect Username/Password' });
       return;
     };
+
     const validPassword = userData.checkPassword(req.body.password);
 
     if(!validPassword){
-      res.status(400).json({ message: "Incorrect Username/Password"});
+      res.status(400).json({ message: 'Incorrect Username/Password' });
       return;
     };
 
