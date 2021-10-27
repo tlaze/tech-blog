@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="jumbotron text-center">
+        <h1 class="display-4">Update or Delete Your Post</h1>
+    </div>
+</div>
+
+<div class="container-fluid new-post">
+    <div class="row">
+        <div class="col-8 offset-2">
+            <div class="card">
+                <form class="bg-dark text-center">
+                    <div class="form-group card-header">
+                        <label for="selected-post-title">Title</label>
+                        <input type="text" class="form-control" id="selected-post-title">
+                        <label for="selected-post-description" class="card-body">Description</label>
+                        <textarea class="form-control" id="selected-post-description" rows="6"></textarea>
+                        <button type="submit" class="btn btn-outline-light post-btn" id="update-post-btn">Update</button>
+                        <button type="submit" class="btn btn-outline-light post-btn" id="delete-post-btn">Delete</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{{!-- While logged in.... --}}
+<script src="/js/selectedPost.js"></script>

@@ -11,19 +11,30 @@ router.post('/dashboard/new', withAuth, async (req,res) => {
         });
 
         res.json(newPost);
-
-        // req.session.save(() => {
-        //     req.session.user_id = newPost.id;
-        //     req.session.title = newPost.title;
-        //     req.session.description = newPost.description;
-        //     req.session.loggedIn = true;
-        //     res.json(newPost);
-        // });
     }
     catch(err){
         console.error(err);
         res.status(500).json(err);
     }
 });
+
+// router.put('/dashboard/:id', withAuth, async (req,res) => {
+//     try{
+//         const updatePost = await Posts.create({
+//             title: req.body.title,
+//             description: req.body.description,
+//             user_id:req.session.user_id
+//         },
+//         {
+//             where: { id: req.params.id }
+//         });
+
+//         res.json(updatePost);
+//     }
+//     catch(err){
+//         console.error(err);
+//         res.status(500).json(err);
+//     }
+// });
 
 module.exports = router;

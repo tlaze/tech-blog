@@ -81,7 +81,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
 // Routes to new post page after clicking button
 router.get('/dashboard/new', async (req, res) => {
   if(req.session.loggedIn){
-    res.render('newPost');
+    res.render('createPost');
   }
   else{
     res.redirect('/');
@@ -92,6 +92,7 @@ router.get('/dashboard/new', async (req, res) => {
 router.get('*', (req, res) => {
   res.redirect('/');
 });
+
 
 
 module.exports = router;
