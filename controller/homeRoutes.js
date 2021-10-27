@@ -57,26 +57,27 @@ router.get('/dashboard', withAuth, async (req, res) => {
           'id',
           'title',
           'description',
-          'date_created',
-          'user_id'
+          'date_created'
         ],
         include:{
           model: Users,
+          attributes: ['username']
           }
       });
       if(!postsData){
         res.status(404).json({ message: "No Posts Available" });
         return;
       }
-      const dashPosts = postsData.map(post => post.get({ plain: true }));
-      dashPosts.user = req.session.username;
-      dashPosts.id = req.session.user_id;
-      console.log("dashpost", dashPosts);
+      const posts = postsData.map(post => post.get({ plain: true }));
+      // console.log("full dash", dashPosts.req.session);
+      posts.user = req.session.username;
+      posts.id = req.session.user_id;
+      console.log("post", posts);
       res.render('dashboard', {
-            dashPosts: dashPosts,
-            user: req.session.username,
-            id: req.session.user_id,
-            loggedIn: req.session.loggedIn
+            posts,
+            // user: req.session.username,
+            // id: req.session.user_id,
+            loggedIn: true
       });
   }
   catch(err) {
@@ -89,5 +90,6 @@ router.get('/dashboard', withAuth, async (req, res) => {
 router.get('/dashboard/new', async (req, res) => {
   res.render('newPost');
 });
+
 
 module.exports = router;

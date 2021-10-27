@@ -9,20 +9,20 @@ Posts.init(
             type: DataTypes.INTEGER,
 			primaryKey: true,
 			allowNull: false,
-			autoIncrement: true,
+			autoIncrement: true
 		},
 		title: {
 			type: DataTypes.STRING,
 			allowNull: false
 		},
         description: {
-            type: DataTypes.STRING,
+            type: DataTypes.TEXT,
 			allowNull: false
         },
 		date_created: {
 			type: DataTypes.DATE,
 			allowNull: false,
-			defaultValue: DataTypes.NOW,
+			defaultValue: DataTypes.NOW
 		},
 		user_id: {
 			type: DataTypes.INTEGER,
