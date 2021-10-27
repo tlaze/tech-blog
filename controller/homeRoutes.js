@@ -28,8 +28,8 @@ router.get('/', async (req, res) => {
 });
 
 // If user is logged in, directs to dashboard, else goes to log in screen
-router.get('/login', (req, res) => {
-  if (req.session.loggedIn) {
+router.get('/login', async (req, res) => {
+  if(req.session.loggedIn){
     res.redirect('/');
     return;
   }
@@ -38,6 +38,10 @@ router.get('/login', (req, res) => {
 
 // Routes to signup page
 router.get('/signup', async (req,res) => {
+  if(req.session.loggedIn){
+    res.redirect('/');
+    return;
+  }
   res.render('signup');
 });
 
@@ -76,49 +80,19 @@ router.get('/dashboard', withAuth, async (req, res) => {
 });
 
 
-// // Adds Posts data to the dashboard.
-// router.get('/dashboard', withAuth, async (req, res) => {
-  
-//   try{
-//     // Find the logged in user based on the session ID
-//     const postsData = await Posts.findAll(
-//       {
-//         where: {
-//           user_id: req.session.user_id,
-//         },
-//         attributes: [
-//           'id',
-//           'title',
-//           'description',
-//           'date_created'
-//         ],
-//         order: [
-//           ['date_created', 'DESC']
-//         ],
-//         include:{
-//           model: Users,
-//           attributes: ['username']
-//           }
-//       });
-//       if(!postsData){
-//         res.status(404).json({ message: "No Posts Available" });
-//         return;
-//       }
-//       res.json(postsData);
-//   }
-//   catch(err) {
-//     console.error(err);
-//     res.status(500).json(err);
-//   }
-// });
-
-
-
-
-
 // Routes to new post page after clicking button
 router.get('/dashboard/new', async (req, res) => {
-  res.render('newPost');
+  if(req.session.loggedIn){
+    res.render('newPost');
+  }
+  else{
+    res.redirect('/');
+    return
+  }
+});
+
+router.get('*', (req, res) => {
+  res.redirect('/');
 });
 
 
