@@ -18,7 +18,7 @@ const loginFormHandler = async (event) => {
       document.location.replace("/");
     } 
     else {
-      alert('Incorrect Username/Password!');
+      alert('Invalid Username/Password!');
     }
   }
 };

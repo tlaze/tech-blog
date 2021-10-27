@@ -15,10 +15,11 @@ router.get('/', async (req, res) => {
           ]
       });
       // Serialized post data so it can be read by the handlebars template
-      const posts = postsData.map((post) => post.get({ plain: true }));
+      const homePosts = postsData.map((post) => post.get({ plain: true }));
   
+      console.log("line20homeRoutes",homePosts);
       //renders homepage.handlebars
-      res.render('homepage', { posts,loggedIn: req.session.loggedIn }); 
+      res.render('homepage', { homePosts ,loggedIn: req.session.loggedIn }); 
     }
     catch(err){
         console.error(err);
@@ -64,9 +65,9 @@ router.get('/dashboard', withAuth, async (req, res) => {
         }
       ]
     })
-    const posts = postsData.map(post => post.get({ plain: true }));
-    console.log("posts from homeRoutes", posts);
-    res.render('dashboard', { posts, loggedIn: true });
+    const dashPosts = postsData.map(post => post.get({ plain: true }));
+    console.log("posts from homeRoutes/dash", dashPosts);
+    res.render('dashboard', { dashPosts, loggedIn: true });
   }
   catch(err) {
     console.error(err);

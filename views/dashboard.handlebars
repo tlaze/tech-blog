@@ -1,12 +1,12 @@
 <div class="container">
     <div class="jumbotron text-center">
         <h1 class="display-4">Dashboard</h1>
-        <h3 id="dashWelcome" class="display-6">Welcome {{user.username}}!</h3>
     </div>
+    
     <section class="text-center">
-        {{#if posts.length}}    
-            <p id="dashInfo">Below are all posts you created. Here you can Add, Update, or Delete posts.</p>
-            {{#each posts as |post|}}
+        {{#if dashPosts.length}}    
+            <p id="dashInfo">Below are all the posts that you have created. In the Dashboard, You can Add, Update, or Delete posts.</p>
+            {{#each dashPosts as |post|}}
             {{> postsDetails}}
             {{/each}}
         {{/if}}
