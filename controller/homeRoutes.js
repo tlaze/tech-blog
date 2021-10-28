@@ -91,18 +91,28 @@ router.get('/dashboard/new', withAuth,async (req, res) => {
 router.get('/dashboard/:id', withAuth, async (req, res) => {
   try {
     const selectedPost = await Posts.findByPk(req.params.id, {
-      include: Users
+      include: [
+         Users,
+
+        {
+          model: Comments,
+          include: [Users],
+        },
+      ],
     });
 
     if (selectedPost) {
       const post = selectedPost.get({ plain: true });
       
       console.log("selectedpost", post);
+
       res.render('selectedPost', { post });
-    } else {
+    }
+    else {
       res.status(404).end();
     }
-  } catch (err) {
+  } 
+  catch (err) {
     res.status(500).json(err);
   }
 });
