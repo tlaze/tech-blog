@@ -107,17 +107,20 @@ router.get('/dashboard/:id', withAuth, async (req, res) => {
   }
 });
 
+// Renders the comments page for the post selected on the home page
 router.get('/comments/:id', async (req, res) => {
   try{
-    const selectedComment = await Comments.findByPk(req.params.id, {
-      include: Users
+    const selectedComment = await Posts.findByPk(req.params.id, {
+      include: Users, Comments
     });
 
     if(selectedComment){
-      const comment = selectedComments.get({ plain: true });
+      const comment = selectedComment.get({ plain: true });
       console.log("Selected Homepage Post", comment);
+
       res.render('selectedComment', { comment });
-    } else {
+    } 
+    else {
       res.status(404).end();
     }
   }
