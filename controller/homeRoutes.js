@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Posts, Users } = require('../models');
+const { Users, Posts, Comments } = require('../models');
 const withAuth = require('../utils/auth');
 
 // Displays all posts on homepage
@@ -17,6 +17,7 @@ router.get('/', async (req, res) => {
       // Serialized post data so it can be read by the handlebars template
       const homePosts = postsData.map((post) => post.get({ plain: true }));
   
+      console.log("Homepage Posts", homePosts);
       //renders homepage.handlebars
       res.render('homepage', { homePosts ,loggedIn: req.session.loggedIn }); 
     }
@@ -102,6 +103,25 @@ router.get('/dashboard/:id', withAuth, async (req, res) => {
       res.status(404).end();
     }
   } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/comments/:id', async (req, res) => {
+  try{
+    const selectedComment = await Comments.findByPk(req.params.id, {
+      include: Users
+    });
+
+    if(selectedComment){
+      const comment = selectedComments.get({ plain: true });
+      console.log("Selected Homepage Post", comment);
+      res.render('selectedComment', { comment });
+    } else {
+      res.status(404).end();
+    }
+  }
+  catch (err) {
     res.status(500).json(err);
   }
 });

@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Users, Posts } = require('../../models');
+const { Users, Posts, Comments } = require('../../models');
 
 // Checks to make sure user logging in is in the database
 router.post('/login', async (req, res) => {

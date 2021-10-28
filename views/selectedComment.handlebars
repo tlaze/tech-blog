@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="jumbotron text-center">
+        <h1 class="display-4">View and Add Comments</h1>
+    </div>
+</div>
+
+<div class="container-fluid new-comment">
+    <div class="row">
+        <div class="col-8 offset-2">
+            <div class="card">
+                <form class="bg-dark text-center" id="selected-comment-form">
+                    <div class="form-group card-header">
+                        <input type="hidden" name="selected-comment-id" value="{{comment.id}}"/>
+                        
+                        <label class="form-label" for="selected-comment-title">title</label>
+                        <input type="text" class="form-control" name="selected-comment-title" placeholder="{{comment.title}}">
+                        
+                        <label class="card-body form-label" for="selected-comment-description">Description</label>
+                        <textarea class="form-control" name="selected-comment-description" rows="6" placeholder="{{comment.description}}"></textarea>
+                        
+                        <button type="submit" class="btn btn-info comment-btn" id="update-comment-btn">Update</button>
+                        <button type="button" class="btn btn-danger comment-btn" id="delete-comment-btn">Delete</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/js/selectedComment.js"></script>

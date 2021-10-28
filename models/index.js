@@ -10,13 +10,13 @@ Posts.belongsTo(Users, {
     foreignKey: "user_id"
 });
 
-Posts.hasMany(Comments,{
+Posts.hasMany(Comments, {
     foreignKey: 'post_id'
 });
 
-Comments.belongsTo(Users,{
+Comments.belongsTo(Users, {
     foreignKey: 'user_id'
 });
 
 
-module.exports = { Posts, Users, Comments};
+module.exports = { Users, Posts, Comments};

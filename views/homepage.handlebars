@@ -7,10 +7,10 @@
 {{#if loggedIn}}
 {{else}}
 <section class="text-center">
-    <p id="homeInfo">The homepage displays posts created from all users. In order to create or comment on posts, You need to Log in or Create an Account. </p>
+    <p id="homeInfo">The homepage displays posts created from all users. Here is where you can View and Comment on other User's posts. You need to Log in or Create an Account in order to do so. </p>
 </section>
 {{/if}}
 
 {{#each homePosts as |post|}}
-{{> comments}}
+{{> homePagePosts}}
 {{/each}}
