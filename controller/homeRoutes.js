@@ -55,8 +55,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
       attributes: [
         "id",
         "title",
-        "description",
-        "date_created"
+        "description"
       ],
       include: [
         {
