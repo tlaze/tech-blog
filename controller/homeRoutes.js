@@ -118,7 +118,7 @@ router.get('/comments/:id', async (req, res) => {
       const comment = selectedComment.get({ plain: true });
       console.log("Selected Homepage Post", comment);
 
-      res.render('selectedComment', { comment });
+      res.render('comments', { comment });
     } 
     else {
       res.status(404).end();

@@ -4,12 +4,14 @@
     </div>
 </div>
 
-{{#if loggedIn}}
-{{else}}
 <section class="text-center">
-    <p id="homeInfo">The homepage displays posts created from all users. Here is where you can View and Comment on other User's posts. You need to Log in or Create an Account in order to do so. </p>
-</section>
+{{#if loggedIn}}
+    <p>The homepage displays posts created from all users. Click on the title of a post to view or create a comment.</p> 
+{{else}}
+    <p>The homepage displays posts created from all users. Here is where you can View and post Comments.</p> 
+    </p>You need to Log in or Create an Account in order to do so. </p>
 {{/if}}
+</section>
 
 {{#each homePosts as |post|}}
 {{> homePagePosts}}
