@@ -21,13 +21,35 @@ router.post('/dashboard/new', withAuth, async (req,res) => {
 
 router.put('/dashboard/:id', withAuth, async (req,res) => {
     try{
-        const [updatePost] = await Posts.update(req.body, {
+        const updatePost = await Posts.update(req.body, {
             where: {
                 id: req.params.id,
             },
         });
 
-        if(updatePost > 0){
+        if(updatePost){
+            res.status(200).end();
+        }
+        else{
+            res.status(404).end();
+        }
+    }
+    catch(err){
+        console.error(err);
+        res.status(500).json(err);
+    }
+});
+
+
+router.delete('/dashboard/:id', withAuth, async (req,res) => {
+    try{
+        const deletePost = await Posts.destroy({
+            where: {
+                id: req.params.id,
+            },
+        });
+
+        if(deletePost){
             res.status(200).end();
         }
         else{

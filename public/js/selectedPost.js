@@ -30,4 +30,27 @@ const updatePostHandler = async (event) => {
          }
      }
  };
+
+
+ const deletePostHandler = async (event) => {
+    event.preventDefault();
+
+    try{
+        const response = await fetch(`/api/posts/dashboard/${postId}`, {
+            method: 'DELETE'
+        });
+        if(response.ok){
+            document.location.replace('/dashboard');
+        }
+        else{
+            alert(response.statusText);
+        }    
+    }
+    catch(err){
+        console.error(err);
+        res.status(500).json(err);
+    }
+};
+
  document.querySelector("#selected-post-form").addEventListener("submit", updatePostHandler);
+ document.querySelector("#delete-post-btn").addEventListener("click", deletePostHandler);
