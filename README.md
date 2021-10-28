@@ -33,12 +33,24 @@
 
   To run this application properly, you need to install:
   
-  Node.js, Express, bcrypt, sequelize, MySQL2, express-session, dotenv, Heroku
+  * Node.js
+  * Express
+  * bcrypt
+  * sequelize
+  * MySQL2
+  * express-session
+  * dotenv
+  * Heroku
   
 
   ## Usage
   
-  Clone from the repository   Navigate to project folder in terminal  Enter npm i Create the .env file  Inside the .env file type DB_Name=techblog_db DB_USER="Your root name for mysql" DB_PASS="Your root password"  Enter npm start  Or to use the application follow the link below
+  * Clone from the repository
+  * Navigate to project folder in terminal
+  * Enter npm i Create the .env file
+  * Inside the .env file type DB_Name=techblog_db DB_USER="Your root name for mysql" DB_PASS="Your root password"
+  * Enter npm start
+  * Or to use the application follow the link below
   
   
   ## License
