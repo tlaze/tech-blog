@@ -2,7 +2,7 @@
 	<div class="row">
 		<div class="col-8 offset-2">
 			<div class="card text-center">
-                <h4 class="card-header bg-dark text-truncate"><a class="link-light" href="/comments/{{id}}">{{title}}</a></h4>
+                <h4 class="card-header bg-primary text-truncate"><a class="link-light" href="/comments/{{id}}">{{title}}</a></h4>
                 <div class="card-body">
                     <p class="card-text">{{description}}</p>
 					<h6 class="card-text">Posted by {{user.username}} on {{format_date createdAt}} at {{format_time createdAt}}</h6>
@@ -12,3 +12,4 @@
 	</div>
 </div>
 
+{{body}}

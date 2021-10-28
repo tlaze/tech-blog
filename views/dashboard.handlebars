@@ -2,21 +2,23 @@
     <div class="jumbotron text-center">
         <h1 class="display-4">Dashboard</h1>
     </div>
-    
-    <section class="text-center">
-        {{#if dashPosts.length}}    
-            <p id="dashInfo">Below are all the posts that you have created. In the Dashboard, You can Add, Update, or Delete posts. Click on the Title of a post to Update your post.</p>
-            {{#each dashPosts as |post|}}
-            {{> dashboardPosts}}
-            {{/each}}
-        {{/if}}
-    </section>
-</div>
+</div>    
+
+<section class="text-center">
+    <h6>Here you can Create, Update, or Delete posts.</h6>
+    {{#if dashPosts.length}}    
+        <h6>Below are all the posts that you have created. Click on the Title of a post to Update your post.</h6>
+        {{#each dashPosts as |post|}}
+        {{> dashboardPosts}}
+        {{/each}}
+    {{/if}}
+</section>
+
 <div class="container">
     <div class="row">
         <div class="col text-center">
             <form action="/dashboard/new">
-                <input type="submit" value="Create New Post" class="btn btn-outline-dark" id="add-post-button"></input>
+                <input type="submit" value="Create New Post" class="btn btn-outline-success" id="add-post-button"></input>
             </form>
         </div>
     </div>
