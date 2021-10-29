@@ -121,12 +121,19 @@ router.get('/dashboard/:id', withAuth, async (req, res) => {
 router.get('/comments/:id', async (req, res) => {
   try{
     const selectedComment = await Posts.findByPk(req.params.id, {
-      include: Users, Comments
+      include: [
+        Users,
+        {
+          model: Comments,
+          include: [Users],
+        },
+      ],
     });
 
     if(selectedComment){
       const comment = selectedComment.get({ plain: true });
-      console.log("Selected Homepage Post", comment);
+      console.log("Selected Homepage Post", Posts);
+      console.log("comment",comment);
 
       res.render('comments', { comment });
     } 
