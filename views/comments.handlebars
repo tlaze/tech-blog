@@ -4,13 +4,17 @@
     </div>
 </div>
 
+<section class="text-center mb-3">
+    <h6>Below are all the comments for the selected post. Feel free to add your own!</h6>
+</section>
 
 
-<div class="container-fluid post">
+<div class="container-fluid post mb-4">
 	<div class="row">
 		<div class="col-8 offset-2">
 			<div class="card text-center">
-                <h4 class="card-header bg-primary">{{comment.title}}</h4>
+                <h4 class="card-header bg-danger">{{comment.title}}</h4>
+                <h6 class="card-text">Posted by {{comment.user.username}} on {{format_date comment.createdAt}} at {{format_time comment.createdAt}}</h6>
                 <div class="card-body">
                     <p class="card-text">{{comment.description}}</p>
                 </div>
@@ -27,12 +31,12 @@
 		<div class="col-8 offset-2">
 			<div class="card text-center">
                 <form id="new-comment-form">
-                    <h4 class="card-header bg-dark text-truncate">Add New Comment</h4>
+                    <h4 class="card-header bg-danger text-truncate">Add New Comment</h4>
                     <div class="card-body">
                         <input type="hidden" name="post-id" value={{post.id}}/>
                         <label class="form-label" for="comment-body"></label>
                         <textarea id="comment-body" class="form-control" rows="4"></textarea>
-                        <button type="submit" id="comment-btn" class="btn btn-dark">Submit</button>
+                        <button type="submit" id="comment-btn" class="btn btn-danger mt-3">Submit</button>
                     </div>
                 </form>
 			</div>
