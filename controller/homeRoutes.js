@@ -49,6 +49,9 @@ router.get('/signup', async (req,res) => {
 router.get('/dashboard', withAuth, async (req, res) => {
   try{
     const postsData = await Posts.findAll({
+      where: {
+        user_id: req.session.user_id,
+      },
       include: [
         {
           model: Users
@@ -58,7 +61,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
     const dashPosts = postsData.map(post => post.get({ plain: true }));
 
     console.log("All Posts on Dashboard: ", dashPosts);
-    res.render("dashboard", { dashPosts, loggedIn: req.session.loggedIn });
+    res.render("dashboard", { dashPosts });
   }
   catch(err) {
     console.error(err);
