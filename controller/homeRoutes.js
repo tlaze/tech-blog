@@ -39,7 +39,7 @@ router.get('/login', async (req, res) => {
 // Routes to signup page
 router.get('/signup', async (req,res) => {
   if(req.session.loggedIn){
-    res.redirect('/');
+    res.redirect('/dashboard');
     return;
   }
   res.render('signup');
@@ -61,11 +61,12 @@ router.get('/dashboard', withAuth, async (req, res) => {
     const dashPosts = postsData.map(post => post.get({ plain: true }));
 
     console.log("All Posts on Dashboard: ", dashPosts);
-    res.render("dashboard", { dashPosts });
+    res.render("dashboard", { dashPosts, loggedIn: req.session.loggedIn });
   }
   catch(err) {
     console.error(err);
     res.status(500).json(err);
+    res.redirect('login');
   }
 });
 

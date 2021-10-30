@@ -1,4 +1,3 @@
-
 // Changes the value of a given item in the post table when selected
 const postId = document.querySelector('input[name="selected-post-id"]').value;
 

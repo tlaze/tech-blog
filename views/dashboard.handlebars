@@ -5,6 +5,7 @@
 </div>    
 
 {{!-- Changes text based on whether the user has a post or not. If they do it displays all their posts on the dashboard --}}
+{{#if loggedIn}}
 <section class="text-center">
     {{#if dashPosts.length}}
         <h6>Below are all the posts you have created.</h6>    
@@ -14,7 +15,7 @@
         {{/each}}
     {{/if}}
 </section>
-
+{{/if}}
 {{!-- Displays a create new post button under all the posts --}}
 <div class="container">
     <div class="row">

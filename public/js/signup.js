@@ -23,7 +23,7 @@ const signupFormHandler = async (event) => {
 
         }
         else {
-            alert('Failed to Create Account.');
+            alert('Failed to Create Account. Password must be more than 6 characters. If so, username is already in database');
         }
     }
 };
