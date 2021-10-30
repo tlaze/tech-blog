@@ -9,6 +9,7 @@
         <link rel="stylesheet" type="text/css" href="/css/style.css">
     </head>
     <body>
+        {{!-- Changes logout/login button based on user's login status --}}
         <header>
             <nav class="navbar navbar-expand navbar-dark bg-dark justify-content-center">
                 <div class="navbar-nav">
@@ -22,7 +23,7 @@
                 </div>
             </nav>
         </header>
-
+        {{!-- Displays all the different handlebars. Keeps the navbar on each page --}}
         <main>
             <div class="content">
                 {{{body}}}

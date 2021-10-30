@@ -1,3 +1,4 @@
+// Creates a new value to the post table
 const newPostHandler = async (event) => {
     
    event.preventDefault();

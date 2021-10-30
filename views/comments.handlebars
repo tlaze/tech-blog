@@ -26,25 +26,24 @@
 
 
 {{!-- Comments user creates --}}
-
-<div style="height: 20em; overflow-y: overlay;">
-    {{#each newComment.comments }}
-        <div class="container-fluid post mb-4">
-            <div class="row">
-                <div class="col-8 offset-2">
-                    <div class="card text-center">
-                        <h6 class="card-header bg-danger">Posted by {{user.username}} on {{format_date createdAt}} at {{format_time createdAt}}</h6>
-                        <div class="card-body">
-                            <p class="card-text">{{description}}</p>
+    {{#if newComment.comments.length}}
+    <div style="height: 20em; overflow-y: overlay;">
+        {{#each newComment.comments }}
+            <div class="container-fluid post mb-4">
+                <div class="row">
+                    <div class="col-8 offset-2">
+                        <div class="card text-center">
+                            <h6 class="card-header bg-danger">Posted by {{user.username}} on {{format_date createdAt}} at {{format_time createdAt}}</h6>
+                            <div class="card-body">
+                                <p class="card-text">{{description}}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    {{/each}}
-</div>
-
-
+        {{/each}}
+    </div>
+{{/if}}
 
 
 

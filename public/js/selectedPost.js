@@ -1,3 +1,5 @@
+
+// Changes the value of a given item in the post table when selected
 const postId = document.querySelector('input[name="selected-post-id"]').value;
 
 const updatePostHandler = async (event) => {
@@ -31,7 +33,7 @@ const updatePostHandler = async (event) => {
      }
  };
 
-
+// Deletes given value from post table
  const deletePostHandler = async (event) => {
     event.preventDefault();
 

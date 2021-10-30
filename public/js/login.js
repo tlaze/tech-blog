@@ -1,3 +1,4 @@
+// Logs user in if their username and password match whats in the user table
 const loginFormHandler = async (event) => {
 
   event.preventDefault();

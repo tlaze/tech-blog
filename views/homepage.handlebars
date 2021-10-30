@@ -4,6 +4,7 @@
     </div>
 </div>
 
+{{!-- Changes text of homepage whether user is logged in or not --}}
 <section class="text-center">
 {{#if loggedIn}}
     <h6>The homepage displays posts created from all users.</h6>
@@ -14,6 +15,7 @@
 {{/if}}
 </section>
 
+{{!-- Displays each individual post on the homepage --}}
 {{#each homePosts as |post|}}
 {{> homePagePosts}}
 {{/each}}

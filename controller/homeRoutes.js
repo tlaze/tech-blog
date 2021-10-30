@@ -27,7 +27,7 @@ router.get('/', async (req, res) => {
     }
 });
 
-// If user is logged in, directs to dashboard, else goes to log in screen
+// If user is logged in, directs to the homepage, else goes to log in screen
 router.get('/login', async (req, res) => {
   if(req.session.loggedIn){
     res.redirect('/');
@@ -137,7 +137,7 @@ router.get('/comments/:id', async (req, res) => {
 });
 
 
-
+// Routes to homepage on any other parameter
 router.get('*', (req, res) => {
   res.redirect('/');
 });

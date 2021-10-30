@@ -1,4 +1,4 @@
-
+// Adds a new value to the comment table when user clicks add comment button
 const newCommentHandler = async (event) => {
     
     event.preventDefault();

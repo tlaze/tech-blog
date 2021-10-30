@@ -19,6 +19,7 @@ router.post('/dashboard/new', withAuth, async (req,res) => {
     }
 });
 
+// Changes the value of selected post in the dashboard
 router.put('/dashboard/:id', withAuth, async (req,res) => {
     try{
         const updatePost = await Posts.update(req.body, {
@@ -40,7 +41,7 @@ router.put('/dashboard/:id', withAuth, async (req,res) => {
     }
 });
 
-
+// Deletes selected post
 router.delete('/dashboard/:id', withAuth, async (req,res) => {
     try{
         const deletePost = await Posts.destroy({

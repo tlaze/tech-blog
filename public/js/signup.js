@@ -1,3 +1,4 @@
+// Creates a new entry in the user table when a user signs up
 const signupFormHandler = async (event) => {
     
     event.preventDefault();
