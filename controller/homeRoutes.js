@@ -97,7 +97,7 @@ router.get('/dashboard/:id', withAuth, async (req, res) => {
       
       console.log("Selected Post: ", post);
 
-      res.render('selectedPost', { post });
+      res.render('selectedPost', { post, loggedIn: true });
     }
     else {
       res.status(404).end();
