@@ -49,15 +49,6 @@ router.get('/signup', async (req,res) => {
 router.get('/dashboard', withAuth, async (req, res) => {
   try{
     const postsData = await Posts.findAll({
-    
-      where: {
-        user_id: req.session.user_id
-      },
-      attributes: [
-        "id",
-        "title",
-        "description"
-      ],
       include: [
         {
           model: Users
