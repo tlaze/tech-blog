@@ -13,15 +13,38 @@
 	<div class="row">
 		<div class="col-8 offset-2">
 			<div class="card text-center">
-                <h4 class="card-header bg-danger">{{comment.title}}</h4>
+                <h4 class="card-header bg-primary">{{newComment.title}}</h4>
                 <div class="card-body">
-                    <p class="card-text">{{comment.description}}</p>
+                    <p class="card-text">{{newComment.description}}</p>
                 </div>
-                <h6 class="card-text">Posted by {{comment.user.username}} on {{format_date comment.createdAt}} at {{format_time comment.createdAt}}</h6>
+                <h6 class="card-text">Posted by {{newComment.user.username}} on {{format_date newComment.createdAt}} at {{format_time newComment.createdAt}}</h6>
 			</div>
 		</div>
 	</div>
 </div>
+
+
+
+{{!-- Comments user creates --}}
+
+<div style="height: 20em; overflow-y: overlay;">
+    {{#each newComment.comments }}
+        <div class="container-fluid post mb-4">
+            <div class="row">
+                <div class="col-8 offset-2">
+                    <div class="card text-center">
+                        <h6 class="card-header bg-danger">Posted by {{user.username}} on {{format_date createdAt}} at {{format_time createdAt}}</h6>
+                        <div class="card-body">
+                            <p class="card-text">{{description}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {{/each}}
+</div>
+
+
 
 
 
@@ -31,7 +54,7 @@
 		<div class="col-8 offset-2">
 			<div class="card text-center">
                 <form id="new-comment-form">
-                    <h4 class="card-header bg-danger text-truncate">Add New Comment</h4>
+                    <h4 class="card-header bg-primary text-truncate">Add New Comment</h4>
                     <div class="card-body">
                         <input type="hidden" id="comment-id" value={{post.id}}/>
                         <label class="form-label" for="comment-body"></label>

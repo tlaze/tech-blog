@@ -121,22 +121,20 @@ router.get('/dashboard/:id', withAuth, async (req, res) => {
 router.get('/comments/:id', async (req, res) => {
   try{
     const selectedComment = await Posts.findByPk(req.params.id, {
-      include: [
+      include: [ Users,
         {
           model: Comments,
+          include: Users,
         },
-        {
-          model: Users,
-        }
       ],
     });
 
     if(selectedComment){
-      const comment = selectedComment.get({ plain: true });
+      const newComment = selectedComment.get({ plain: true });
 
-      console.log("SelectedPost to view Comments: ", comment);
+      console.log("SelectedPost to view Comments: ", newComment);
 
-      res.render('comments', { comment, loggedIn:req.session.loggedIn });
+      res.render('comments', { newComment, loggedIn:req.session.loggedIn });
     } 
     else {
       res.status(404).end();
