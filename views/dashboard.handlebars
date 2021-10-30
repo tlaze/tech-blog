@@ -7,6 +7,7 @@
 {{!-- Changes text based on whether the user has a post or not. If they do it displays all their posts on the dashboard --}}
 {{#if loggedIn}}
 <section class="text-center">
+    <h4>Welcome {{dashPosts.[0].user.username}}!</h4>
     {{#if dashPosts.length}}
         <h6>Below are all the posts you have created.</h6>    
         <h6>Click on the <b>Title</b> of a post to <b>Update</b> or <b>Delete</b> your post.</h6>
