@@ -2,14 +2,14 @@
 const newCommentHandler = async (event) => {
     
     event.preventDefault();
-    alert("button clicked");
+    // alert("button clicked");
     const description = document.querySelector('#comment-body').value.trim();
     const postId = window.location.toString().split('/')[
         window.location.toString().split('/').length - 1
       ];
  
      if(description){
-         alert(postId);
+        //  alert(postId);
          try{
              const response = await fetch(`/api/comments/${postId}`,{
                  method: 'POST',
@@ -19,9 +19,9 @@ const newCommentHandler = async (event) => {
                  }),
                  headers: { 'Content-Type': 'application/json' },
              });
-             alert("after fetch", response);
+            //  alert("after fetch", response);
              if(response.ok){
-                 alert("fetch ok");
+                //  alert("fetch ok");
                  document.location.reload();
              }
              else{

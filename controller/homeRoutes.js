@@ -66,7 +66,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
     })
     const dashPosts = postsData.map(post => post.get({ plain: true }));
 
-    console.log("posts from homeRoutes/dash", dashPosts);
+    console.log("All Posts on Dashboard: ", dashPosts);
     res.render("dashboard", { dashPosts, loggedIn: true });
   }
   catch(err) {
@@ -104,7 +104,7 @@ router.get('/dashboard/:id', withAuth, async (req, res) => {
     if (selectedPost) {
       const post = selectedPost.get({ plain: true });
       
-      console.log("selectedpost", post);
+      console.log("Selected Post: ", post);
 
       res.render('selectedPost', { post });
     }
@@ -124,9 +124,6 @@ router.get('/comments/:id', async (req, res) => {
       include: [
         {
           model: Comments,
-          include: {
-            model: Users,
-          }
         },
         {
           model: Users,
@@ -136,8 +133,8 @@ router.get('/comments/:id', async (req, res) => {
 
     if(selectedComment){
       const comment = selectedComment.get({ plain: true });
-      // console.log("Selected Homepage Post", Posts);
-      console.log("SelectedPost to comment: ", comment);
+
+      console.log("SelectedPost to view Comments: ", comment);
 
       res.render('comments', { comment, loggedIn:req.session.loggedIn });
     } 

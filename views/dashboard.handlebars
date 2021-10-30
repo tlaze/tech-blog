@@ -5,9 +5,9 @@
 </div>    
 
 <section class="text-center">
-    <h6>Here you can Create, Update, or Delete posts.</h6>
-    {{#if dashPosts.length}}    
-        <h6>Below are all the posts that you have created. Click on the <b>Title</b> of a post to <b>Update</b> or <b>Delete</b> your post.</h6>
+    {{#if dashPosts.length}}
+        <h6>Below are all the posts you have created.</h6>    
+        <h6>Click on the <b>Title</b> of a post to <b>Update</b> or <b>Delete</b> your post.</h6>
         {{#each dashPosts as |post|}}
         {{> dashboardPosts}}
         {{/each}}
