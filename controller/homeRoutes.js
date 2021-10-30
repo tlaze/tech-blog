@@ -122,20 +122,24 @@ router.get('/comments/:id', async (req, res) => {
   try{
     const selectedComment = await Posts.findByPk(req.params.id, {
       include: [
-        Users,
         {
           model: Comments,
-          include: [Users],
+          include: {
+            model: Users,
+          }
         },
+        {
+          model: Users,
+        }
       ],
     });
 
     if(selectedComment){
       const comment = selectedComment.get({ plain: true });
-      console.log("Selected Homepage Post", Posts);
-      console.log("comment",comment);
+      // console.log("Selected Homepage Post", Posts);
+      console.log("SelectedPost to comment: ", comment);
 
-      res.render('comments', { comment });
+      res.render('comments', { comment, loggedIn:req.session.loggedIn });
     } 
     else {
       res.status(404).end();
