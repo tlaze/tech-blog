@@ -73,7 +73,7 @@
 
   ## Links
 
-  [Live Application](https://cryptic-thicket-49114.herokuapp.com/)
+  [Live Application](https://tom-blog-ad9726927b47.herokuapp.com/)
 
   [Project Repository](https://github.com/tlaze/tech-blog)
   
