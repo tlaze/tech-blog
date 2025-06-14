@@ -1,69 +1,50 @@
+![badge](https://img.shields.io/badge/license-MIT-brightgreen)
 
+# 📝 Tech Blog
 
-  ![badge](https://img.shields.io/badge/license-MIT-brightgreen)
-  
-  # tech-blog
-  
+A full-stack blogging platform where users can create, update, delete, and comment on posts. Authenticated users gain full access to personalized content and community interaction.
 
-  ## Table Of Contents
+---
 
-  * [Description](#description)
+## 📚 Table of Contents
 
-  * [Installation](#installation)
+- [Description](#description)
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Usage](#usage)
+- [License](#license)
+- [Contributors](#contributors)
+- [Tests](#tests)
+- [Screenshots](#screenshots)
 
-  * [Usage](#usage)
+---
 
-  * [License](#license)
+## 📖 Description
 
-  * [Contributors](#contributors)
+This application enables users to sign up, log in, and engage in blog-style discussions. Authenticated users can create their own posts, edit or delete them, and interact with other users through comments.
 
-  * [Tests](#tests)
+---
 
-  * [ScreenShots](#screenshots)
+## ✨ Features
 
-  * [Links](#links)
+- User authentication with sessions
+- Create, read, update, delete (CRUD) functionality for posts and comments
+- Responsive dashboard with user-specific content
+- Sequelize ORM for database interaction
+- Clean and modular MVC architecture
 
-  * [Questions](#questions)
+---
 
-  ## Description
+## 🛠 Technologies Used
 
-  This application allows users to view, create, update, and delete posts and comments. Users can get full access to the site by logging in. Then they will have the ability to customize their posts and comments.
-  
-  ## Installation
+- **Frontend**: Handlebars.js, HTML, CSS
+- **Backend**: Node.js, Express.js
+- **Authentication**: bcrypt, express-session
+- **Database**: MySQL, Sequelize ORM
+- **Environment Management**: dotenv
+- **Deployment**: Heroku
 
-  To run this application properly, you need to install:
-  
-  * Node.js
-  * Express
-  * bcrypt
-  * sequelize
-  * MySQL2
-  * express-session
-  * dotenv
-  * Heroku
-  
-
-  ## Usage
-  
-  * Clone from the repository
-  * Navigate to project folder in terminal
-  * Enter npm i Create the .env file
-  * Inside the .env file type DB_Name=techblog_db DB_USER="Your root name for mysql" DB_PASS="Your root password"
-  * Enter npm start
-  * Or to use the application follow the link below
-  
-  
-  ## License
-  
-  This Project is licensed by [MIT](https://choosealicense.com/licenses/mit/).
-  
-  ## Contributors
-
-  Tom Lazore - Contact info below
-  
-  ## Tests
-  
-  To test this application, enter Comments still need work. in the command line
+---
 
   ## ScreenShot
 
@@ -76,14 +57,5 @@
   [Live Application](https://tom-blog-ad9726927b47.herokuapp.com/)
 
   [Project Repository](https://github.com/tlaze/tech-blog)
-  
-  
-  ## Questions
-
-  If you have any questions, comments, or issues feel free to contact Tom Lazore directly through
-  
-  Email: tomlazore@gmail.com
-
-  or check out my [GitHub](https://github.com/tlaze)
 
   
