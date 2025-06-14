@@ -54,7 +54,7 @@ This application enables users to sign up, log in, and engage in blog-style disc
 
   ## Links
 
-  [Live Application](https://tom-blog-ad9726927b47.herokuapp.com/)
+  [Live Application](https://toms-tech-blog-e89407441940.herokuapp.com/dashboard)
 
   [Project Repository](https://github.com/tlaze/tech-blog)
 
